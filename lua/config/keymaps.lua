@@ -40,6 +40,7 @@ vim.keymap.set("t", "<D-S-l>", "<C-\\><C-n><leader>ac", { remap = true, desc = "
 vim.keymap.set("v", "<D-S-l>", "<leader>as", { remap = true, desc = "Claude selection (via leader as)" })
 
 vim.keymap.set("n", "<leader>ff", "<leader>fF", { remap = true, desc = "Find files (cwd)" })
+vim.keymap.set("n", "<D-.>", "<leader>ca", { remap = true, desc = "Code Action" })
 
 vim.keymap.set("n", "<leader>gd", "<cmd>CodeDiff history HEAD~20 %<CR>", { desc = "CodeDiff history HEAD~30" })
 vim.keymap.set("n", "<leader>gg", "<cmd>CodeDiff<CR>", { desc = "CodeDiff" })
