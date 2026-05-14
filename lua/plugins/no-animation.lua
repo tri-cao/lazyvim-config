@@ -13,7 +13,7 @@ return {
               preset = "sidebar",
               layout = {
                 position = "left",
-                width = 30,
+                width = 40,
               },
             },
           },
