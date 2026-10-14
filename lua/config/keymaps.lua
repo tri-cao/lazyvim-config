@@ -46,5 +46,14 @@ vim.keymap.set("n", "<leader>gd", "<cmd>CodeDiff history HEAD~20 %<CR>", { desc 
 vim.keymap.set("n", "<leader>gg", "<cmd>CodeDiff<CR>", { desc = "CodeDiff" })
 
 vim.keymap.set({ "n", "t" }, "<D-S-j>", function()
-  Snacks.terminal(nil, { cwd = LazyVim.root() })
-end, { desc = "Terminal (Root Dir)" })
+  -- Use Neovim's cwd (not LazyVim.root(), which picks the submodule root) so the
+  -- terminal is the same from every buffer. Inside a terminal, just hide it.
+  if vim.bo.filetype == "snacks_terminal" then
+    return vim.cmd("hide")
+  end
+  Snacks.terminal(nil, { cwd = vim.uv.cwd() })
+end, { desc = "Terminal (Cwd)" })
+
+-- Replace LazyVim's <leader>ft (terminal) with DBee search
+pcall(vim.keymap.del, "n", "<leader>ft")
+vim.keymap.set("n", "<leader>ft", "<cmd>Dbee search<cr>", { desc = "DBee search" })

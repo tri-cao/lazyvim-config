@@ -13,12 +13,12 @@ return {
       local mappings = vim.tbl_filter(function(mapping)
         return mapping.action ~= "complete"
       end, vim.deepcopy(require("dbee.config").default.editor.mappings))
-      require("dbee").setup {
+      require("dbee").setup({
         editor = {
           completion = { auto = false },
           mappings = mappings,
         },
-      }
+      })
     end,
   },
   {
@@ -53,7 +53,7 @@ return {
         score_offset = 100,
       }
       opts.sources.per_filetype = opts.sources.per_filetype or {}
-      for _, filetype in ipairs { "sql", "mysql", "plsql" } do
+      for _, filetype in ipairs({ "sql", "mysql", "plsql" }) do
         opts.sources.per_filetype[filetype] = { "dbee" }
       end
     end,
